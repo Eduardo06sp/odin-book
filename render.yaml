@@ -2,11 +2,13 @@ databases:
   - name: odin_book
     databaseName: odin_book
     user: odin_book
+    plan: free
 
 services:
   - type: web
     name: odin_book
     env: ruby
+    plan: free
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
