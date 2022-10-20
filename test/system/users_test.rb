@@ -19,4 +19,16 @@ class UsersTest < ApplicationSystemTestCase
 
     assert_text 'Posts#index'
   end
+
+  test 'signing in' do
+    visit new_user_session_path
+    assert_selector 'h2', text: 'Log in'
+
+    fill_in 'Email', with: 'dean@hunter.com'
+    fill_in 'Password', with: 'dean123456'
+
+    click_on 'Log in'
+
+    assert_text 'Posts#index'
+  end
 end
