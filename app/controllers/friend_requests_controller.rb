@@ -11,5 +11,10 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
+    user = User.find_by(id: params[:user])
+    friend = User.find_by(id: params[:friend])
+    friend_request = FriendRequest.find_sole_by(user_id: user, friend_id: friend)
+
+    friend_request.destroy
   end
 end
