@@ -4,11 +4,11 @@ class FriendsController < ApplicationController
     friend = User.find_by(id: params[:friend])
     puts 'THIS SUPPOSED TO BE ADDING A FREND'
 
-    if user.friends << friend
+    if user.friends << friend && friend.friends << user
       friend_request = FriendRequest.find_sole_by(friend_id: friend, user_id: user)
       friend_request.destroy
 
-      puts 'SAY HELLO, YOU MADE A NEW FREND'
+      puts 'SAY HELLO, YOU ARE NOW FRENDS'
     else
       puts 'ERROR, CANNOT BE FRENDS SORRY'
     end
