@@ -3,6 +3,8 @@
 
 <ul>
   <% @users.each do |user| %>
+    <% next if current_user.id == user.id %>
+
     <li>
       <% if @friend_requester_ids.include?(user.id) %>
         <% friend_request = FriendRequest.find_sole_by(user_id: current_user, friend_id: user) %>
