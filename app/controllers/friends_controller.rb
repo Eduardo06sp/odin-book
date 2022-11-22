@@ -12,5 +12,7 @@ class FriendsController < ApplicationController
     else
       puts 'ERROR, CANNOT BE FRENDS SORRY'
     end
+
+    redirect_back_or_to root_path
   end
 end
