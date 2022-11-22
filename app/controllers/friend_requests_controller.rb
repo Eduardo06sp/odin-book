@@ -8,6 +8,8 @@ class FriendRequestsController < ApplicationController
     else
       p 'BRO ADD ME ALREADY'
     end
+
+    redirect_back_or_to root_path
   end
 
   def destroy
@@ -16,5 +18,7 @@ class FriendRequestsController < ApplicationController
     friend_request = FriendRequest.find_sole_by(user_id: user, friend_id: friend)
 
     friend_request.destroy
+
+    redirect_back_or_to root_path
   end
 end
