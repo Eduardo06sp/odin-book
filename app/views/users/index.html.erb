@@ -12,6 +12,9 @@
         <%= user.email %>
         <%= button_to 'Accept Friend Request', friends_path, params: { user: current_user, friend: user } %>
         <%= button_to 'Decline Friend Request', friend_request_path(friend_request), params: { user: current_user, friend: user }, method: :delete %>
+      <% elsif @friend_ids.include?(user.id) %>
+        <%= user.email %>
+        <%= button_to 'Unfriend', friend_path(user.id), params: { user: current_user, friend: user }, method: :delete %>
       <% else %>
         <%= user.email %><%= button_to 'Send Friend Request', friend_requests_path, params: { user: } %>
       <% end %>

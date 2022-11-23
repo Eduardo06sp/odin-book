@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'posts/index'
 
   resources :friend_requests, only: %i[create destroy]
-  resources :friends, only: %i[create]
+  resources :friends, only: %i[create destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -15,4 +15,19 @@ class FriendsController < ApplicationController
 
     redirect_back_or_to root_path
   end
+
+  def destroy
+    user = User.find_by(id: params[:user])
+    friend = User.find_by(id: params[:friend])
+
+    puts 'THIS SHALL DESTROY THE FRIENDSHIP'
+
+    if user.friends.destroy(friend) && friend.friends.destroy(user)
+      puts 'FRIENDSHIP DESTROYED'
+    else
+      puts 'UNABLE TO DESTROY FRIENDSHIP, GO SAY SORRY'
+    end
+
+    redirect_back_or_to root_path
+  end
 end
