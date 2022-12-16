@@ -10,11 +10,11 @@
         <% friend_request = FriendRequest.find_sole_by(user_id: current_user, friend_id: user) %>
 
         <%= user.email %>
-        <%= button_to 'Accept Friend Request', friends_path, params: { user: current_user, friend: user } %>
+        <%= button_to 'Accept Friend Request', friendships_path, params: { user: current_user, friend: user } %>
         <%= button_to 'Decline Friend Request', friend_request_path(friend_request), params: { user: current_user, friend: user }, method: :delete %>
       <% elsif @friend_ids.include?(user.id) %>
         <%= user.email %>
-        <%= button_to 'Unfriend', friend_path(user.id), params: { user: current_user, friend: user }, method: :delete %>
+        <%= button_to 'Unfriend', friendship_path(user.id), params: { user: current_user, friend: user }, method: :delete %>
       <% elsif @friend_request_recipient_ids.include?(user.id) %>
         <% friend_request = FriendRequest.find_sole_by(user_id: user, friend_id: current_user) %>
 
