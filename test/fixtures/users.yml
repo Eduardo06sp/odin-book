@@ -17,3 +17,7 @@ dean:
 sam:
   email: sam@hunter.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'sam123456') %>
+
+castiel:
+  email: castiel@angel.org
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'castiel123456') %>
