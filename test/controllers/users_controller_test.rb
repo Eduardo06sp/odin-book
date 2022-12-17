@@ -12,4 +12,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 #    get users_show_url
 #    assert_response :success
 #  end
+
+  test 'should show send friend request button by default' do
+    sign_in users(:dean)
+
+    get users_path
+    assert_response :success
+
+    assert_select 'ul' do
+      assert_select 'button', text: 'Send Friend Request', count: 2
+    end
+  end
 end
