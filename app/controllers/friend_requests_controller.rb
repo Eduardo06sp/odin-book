@@ -6,7 +6,7 @@ class FriendRequestsController < ApplicationController
     if new_friend_request.save
       p 'WASSSSUUUUUPP'
     else
-      p 'BRO ADD ME ALREADY'
+      flash[:alert] = 'Unable to send friend request.'
     end
 
     redirect_back_or_to root_path
