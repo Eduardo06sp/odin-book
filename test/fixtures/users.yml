@@ -13,3 +13,7 @@
 dean:
   email: dean@hunter.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'dean123456') %>
+
+sam:
+  email: sam@hunter.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'sam123456') %>
