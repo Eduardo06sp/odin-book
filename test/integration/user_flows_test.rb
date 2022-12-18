@@ -24,4 +24,18 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     end
     assert_response :redirect
   end
+
+  test 'cannot add friend without friend request' do
+    sign_in users(:dean)
+
+    assert_no_difference('users(:dean).friends.count') do
+      post friendships_path,
+           params: {
+             user: users(:sam).id,
+             friend: users(:dean).id
+           }
+    end
+    assert_response :redirect
+    assert_equal flash[:alert], 'Friend request must exist before becoming friends.'
+  end
 end
