@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
     friend_request = FriendRequest.find_by(friend_id: friend, user_id: user)
 
     if friend_request.nil?
-      puts 'FRIEND REQUEST DOES NOT EXIST, YOU CANNOT BE FRIENDS SORRY'
+      flash[:alert] = 'Friend request must exist before becoming friends.'
       redirect_back_or_to root_path
       return
     end
