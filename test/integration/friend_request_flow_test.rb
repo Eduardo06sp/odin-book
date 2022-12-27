@@ -39,4 +39,22 @@ class FriendRequestFlowTest < ActionDispatch::IntegrationTest
 
     assert_equal 'Unable to send friend request.', flash[:alert]
   end
+
+  def login(user)
+    open_session do |session|
+      u = users(user)
+      session.https!
+      session.post '/users/sign_in',
+                   params: {
+                     user: {
+                       email: u.email,
+                       password: "#{user}123456"
+                     }
+                   }
+      session.https!(false)
+
+      session.get root_path
+      session.assert_response :success
+    end
+  end
 end
