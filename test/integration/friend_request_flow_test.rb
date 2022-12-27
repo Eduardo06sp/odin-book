@@ -40,6 +40,21 @@ class FriendRequestFlowTest < ActionDispatch::IntegrationTest
     assert_equal 'Unable to send friend request.', flash[:alert]
   end
 
+  test 'cannot send friend request if user already received one' do
+    dean = login(:dean)
+    sam = login(:sam)
+
+    dean.post friend_requests_path,
+              params: { user: users(:sam).id }
+    dean.assert_response :redirect
+    assert_equal 'Sent friend request!', dean.flash[:notice]
+
+    sam.post friend_requests_path,
+             params: { user: users(:dean).id }
+    sam.assert_response :redirect
+    assert_equal 'Unable to send friend request.', sam.flash[:alert]
+  end
+
   def login(user)
     open_session do |session|
       u = users(user)
