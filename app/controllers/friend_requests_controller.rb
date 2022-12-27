@@ -4,7 +4,7 @@ class FriendRequestsController < ApplicationController
     new_friend_request = user.friend_requests.build(friend_id: current_user.id)
 
     if new_friend_request.save
-      p 'WASSSSUUUUUPP'
+      flash[:notice] = 'Sent friend request!'
     else
       flash[:alert] = 'Unable to send friend request.'
     end
