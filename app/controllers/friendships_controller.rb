@@ -7,8 +7,6 @@ class FriendshipsController < ApplicationController
     friendship = user.friendships.build(friend_id: friend.id)
     inverse_friendship = friend.friendships.build(friend_id: user.id)
 
-    puts 'THIS SUPPOSED TO BE ADDING A FREND'
-
     if friendship.save(context: :accept_friend_request) && inverse_friendship.save
       friend_request.destroy
 
