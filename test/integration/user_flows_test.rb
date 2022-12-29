@@ -57,6 +57,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
            }
     end
     assert_response :redirect
-    assert_equal 'Friend request must exist before becoming friends.', flash[:alert]
+    assert_equal 'Unable to add friend.', flash[:alert]
   end
 end
