@@ -4,15 +4,12 @@ class FriendshipsController < ApplicationController
     friend = User.find_by(id: params[:friend])
     friend_request = FriendRequest.find_by(friend_id: friend, user_id: user)
 
-    if friend_request.nil?
-      flash[:alert] = 'Friend request must exist before becoming friends.'
-      redirect_back_or_to root_path
-      return
-    end
+    friendship = user.friendships.build(friend_id: friend.id)
+    inverse_friendship = friend.friendships.build(friend_id: user.id)
 
     puts 'THIS SUPPOSED TO BE ADDING A FREND'
 
-    if user.friends << friend && friend.friends << user
+    if friendship.save(context: :accept_friend_request) && inverse_friendship.save
       friend_request.destroy
 
       puts 'SAY HELLO, YOU ARE NOW FRENDS'
