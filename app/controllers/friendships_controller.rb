@@ -17,7 +17,7 @@ class FriendshipsController < ApplicationController
 
       puts 'SAY HELLO, YOU ARE NOW FRENDS'
     else
-      puts 'ERROR, CANNOT BE FRENDS SORRY'
+      flash[:alert] = 'Unable to add friend.'
     end
 
     redirect_back_or_to root_path
