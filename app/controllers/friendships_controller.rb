@@ -1,16 +1,14 @@
 class FriendshipsController < ApplicationController
   after_action :add_friend_back, only: :create
+  after_action :delete_associated_request, only: :create
 
   def create
     user = User.find_by(id: params[:user])
     friend = User.find_by(id: params[:friend])
-    friend_request = FriendRequest.find_by(friend_id: friend, user_id: user)
 
     friendship = user.friendships.build(friend_id: friend.id)
 
     if friendship.save(context: :accept_friend_request)
-      friend_request.destroy
-
       puts 'SAY HELLO, YOU ARE NOW FRENDS'
     else
       flash[:alert] = 'Unable to add friend.'
@@ -43,5 +41,11 @@ class FriendshipsController < ApplicationController
     else
       flash[:alert] = 'Unable to complete friendship.'
     end
+  end
+
+  def delete_associated_request
+    friend_request = FriendRequest.find_by(friend_id: params[:friend], user_id: params[:user])
+
+    friend_request.destroy
   end
 end
