@@ -3,9 +3,7 @@ class FriendshipsController < ApplicationController
 
   def create
     user = User.find_by(id: params[:user])
-    friend = User.find_by(id: params[:friend])
-
-    friendship = user.friendships.build(friend_id: friend.id)
+    friendship = user.friendships.build(friend_id: params[:friend])
 
     if friendship.save!(context: :accept_friend_request)
       puts 'SAY HELLO, YOU ARE NOW FRENDS'
