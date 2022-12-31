@@ -5,11 +5,7 @@ class FriendshipsController < ApplicationController
     user = User.find_by(id: params[:user])
     friendship = user.friendships.build(friend_id: params[:friend])
 
-    if friendship.save!(context: :accept_friend_request)
-      puts 'SAY HELLO, YOU ARE NOW FRENDS'
-    else
-      flash[:alert] = 'Unable to add friend.'
-    end
+    friendship.save!(context: :accept_friend_request)
 
     redirect_back_or_to root_path
   end
@@ -33,11 +29,7 @@ class FriendshipsController < ApplicationController
     friend = User.find_by(id: params[:friend])
     inverse_friendship = friend.friendships.build(friend_id: params[:user])
 
-    if inverse_friendship.save!
-      puts 'SAY HELLO BACK, YA GOT ADDED BACK AUTOMATICALLY'
-    else
-      flash[:alert] = 'Unable to complete friendship.'
-    end
+    inverse_friendship.save!
   end
 
   def delete_associated_request
