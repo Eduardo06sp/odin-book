@@ -52,8 +52,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_no_difference('users(:dean).friends.count') do
       post friendships_path,
            params: {
-             user: users(:sam).id,
-             friend: users(:dean).id
+             user: users(:dean).id,
+             friend: users(:sam).id
            }
     end
     assert_response :redirect
