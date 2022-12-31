@@ -23,6 +23,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
            }
     end
     assert_response :redirect
+
+    assert_empty users(:dean).friend_requests
+    assert_empty users(:sam).friend_requests
   end
 
   test 'user is friend of new friend after accepting friend request' do
