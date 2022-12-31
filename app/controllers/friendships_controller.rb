@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
-  after_action :add_friend_back, only: :create
-  after_action :delete_associated_request, only: :create
+  around_action :complete_friendship, only: :create
 
   def create
     user = User.find_by(id: params[:user])
@@ -47,5 +46,16 @@ class FriendshipsController < ApplicationController
     friend_request = FriendRequest.find_by(friend_id: params[:friend], user_id: params[:user])
 
     friend_request.destroy!
+  end
+
+  def complete_friendship
+    ActiveRecord::Base.transaction do
+      yield
+      add_friend_back
+      delete_associated_request
+    end
+  rescue ActiveRecord::RecordInvalid
+    flash[:alert] = 'Unable to add friend.'
+    redirect_back_or_to root_path
   end
 end
