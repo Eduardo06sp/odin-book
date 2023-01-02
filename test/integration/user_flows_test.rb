@@ -62,4 +62,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_equal 'Unable to add friend.', flash[:alert]
   end
+
+  test 'can unfriend user' do
+    sign_in users(:sam)
+    friend_counts = %w[users(:sam).friends.count users(:castiel).friends.count]
+
+    assert_difference(friend_counts, -1) do
+      delete friendship_path(users(:castiel).id),
+             params: {
+               user: users(:sam).id,
+               friend: users(:castiel).id
+             }
+    end
+  end
 end
