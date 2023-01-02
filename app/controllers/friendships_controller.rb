@@ -14,8 +14,6 @@ class FriendshipsController < ApplicationController
   def destroy
     friendship = Friendship.find_sole_by(id: params[:id])
 
-    puts 'THIS SHALL DESTROY THE FRIENDSHIP'
-
     friendship.destroy!
 
     redirect_back_or_to root_path
