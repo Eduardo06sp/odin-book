@@ -8,12 +8,10 @@ class Friendship < ApplicationRecord
   def friend_request_present?
     friend_request = FriendRequest.find_by(user_id: user, friend_id: friend)
 
-    if friend_request.present?
-      puts 'FRIEND REQUEST PRESENT; PASS'
-    else
-      errors.add :base,
-                 :friend_request_missing,
-                 message: 'associated friend request missing'
-    end
+    return unless friend_request.nil?
+
+    errors.add :base,
+               :friend_request_missing,
+               message: 'associated friend request missing'
   end
 end
