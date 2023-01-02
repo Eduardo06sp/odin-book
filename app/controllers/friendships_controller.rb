@@ -11,12 +11,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find_by(id: params[:user])
-    friend = User.find_by(id: params[:friend])
+    friendship = Friendship.find_sole_by(id: params[:id])
 
     puts 'THIS SHALL DESTROY THE FRIENDSHIP'
 
-    if user.friends.destroy(friend) && friend.friends.destroy(user)
+    if friendship.destroy
       puts 'FRIENDSHIP DESTROYED'
     else
       puts 'UNABLE TO DESTROY FRIENDSHIP, GO SAY SORRY'
