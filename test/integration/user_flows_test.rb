@@ -68,7 +68,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     friend_counts = %w[users(:sam).friends.count users(:castiel).friends.count]
 
     assert_difference(friend_counts, -1) do
-      delete friendship_path(users(:castiel).id),
+      delete friendship_path(friendships(:sam_castiel)),
              params: {
                user: users(:sam).id,
                friend: users(:castiel).id
