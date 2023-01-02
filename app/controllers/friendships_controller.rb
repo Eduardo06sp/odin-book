@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   around_action :complete_friendship, only: :create
-  after_action :destroy_inverse_friendship, only: :destroy
+  around_action :destroy_friendship, only: :destroy
 
   def create
     user = User.find_by(id: params[:user])
@@ -57,5 +57,12 @@ class FriendshipsController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     flash[:alert] = 'Unable to add friend.'
     redirect_back_or_to root_path
+  end
+
+  def destroy_friendship
+    ActiveRecord::Base.transaction do
+      yield
+      destroy_inverse_friendship
+    end
   end
 end
