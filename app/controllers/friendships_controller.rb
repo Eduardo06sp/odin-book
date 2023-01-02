@@ -16,11 +16,7 @@ class FriendshipsController < ApplicationController
 
     puts 'THIS SHALL DESTROY THE FRIENDSHIP'
 
-    if friendship.destroy!
-      puts 'FRIENDSHIP DESTROYED'
-    else
-      puts 'UNABLE TO DESTROY FRIENDSHIP, GO SAY SORRY'
-    end
+    friendship.destroy!
 
     redirect_back_or_to root_path
   end
@@ -28,11 +24,7 @@ class FriendshipsController < ApplicationController
   def destroy_inverse_friendship
     inverse_friendship = Friendship.find_sole_by(user_id: params[:friend], friend_id: params[:user])
 
-    if inverse_friendship.destroy!
-      puts 'INVERSE FRIENDSHIP DESTROYED'
-    else
-      puts 'UNABLE TO DESTROY FRIENDSHIP, GO SAY SORRY'
-    end
+    inverse_friendship.destroy!
   end
 
   def add_friend_back
