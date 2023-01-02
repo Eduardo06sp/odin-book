@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   around_action :complete_friendship, only: :create
+  after_action :destroy_inverse_friendship, only: :destroy
 
   def create
     user = User.find_by(id: params[:user])
@@ -22,6 +23,16 @@ class FriendshipsController < ApplicationController
     end
 
     redirect_back_or_to root_path
+  end
+
+  def destroy_inverse_friendship
+    inverse_friendship = Friendship.find_sole_by(user_id: params[:friend], friend_id: params[:user])
+
+    if inverse_friendship.destroy
+      puts 'INVERSE FRIENDSHIP DESTROYED'
+    else
+      puts 'UNABLE TO DESTROY FRIENDSHIP, GO SAY SORRY'
+    end
   end
 
   def add_friend_back
