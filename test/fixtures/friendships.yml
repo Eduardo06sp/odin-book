@@ -7,3 +7,10 @@
 # two:
 #   user: two
 #   friend: two
+sam_castiel:
+  user: sam
+  friend: castiel
+
+castiel_sam:
+  user: castiel
+  friend: sam
