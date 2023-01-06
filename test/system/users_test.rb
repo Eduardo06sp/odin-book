@@ -15,7 +15,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in 'Password', with: '123456'
     fill_in 'Password confirmation', with: '123456'
 
-    click_on 'Sign up'
+    click_button 'Sign up'
 
     assert_text 'Posts#index'
   end
@@ -27,7 +27,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in 'Email', with: 'dean@hunter.com'
     fill_in 'Password', with: 'dean123456'
 
-    click_on 'Log in'
+    click_button 'Log in'
 
     assert_text 'Posts#index'
   end
