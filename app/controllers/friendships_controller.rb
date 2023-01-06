@@ -38,11 +38,23 @@ class FriendshipsController < ApplicationController
     friend_request.destroy!
   end
 
+  def notify_friend
+    user = User.find_by(id: params[:user])
+    friend = User.find_by(id: params[:friend])
+
+    friend.notifications.create!(description:
+                                 '<span class="notification_username">'\
+                                 "#{user.email}"\
+                                 '</span>'\
+                                 ' accepted your friend request! You are now friends!')
+  end
+
   def complete_friendship
     ActiveRecord::Base.transaction do
       yield
       add_friend_back
       delete_associated_request
+      notify_friend
     end
   rescue ActiveRecord::RecordInvalid
     flash[:alert] = 'Unable to add friend.'
