@@ -12,7 +12,10 @@ class FriendRequestFlowTest < ActionDispatch::IntegrationTest
 
     assert_difference('FriendRequest.count') do
       post friend_requests_path,
-           params: { user: users(:sam).id }
+           params: {
+             user: users(:sam).id,
+             friend: users(:dean).id
+           }
     end
 
     assert_response :redirect
@@ -28,12 +31,18 @@ class FriendRequestFlowTest < ActionDispatch::IntegrationTest
     sign_in users(:dean)
 
     post friend_requests_path,
-         params: { user: users(:sam).id }
+         params: {
+           user: users(:sam).id,
+           friend: users(:dean).id
+         }
     assert_response :redirect
 
     assert_no_difference('FriendRequest.count') do
       post friend_requests_path,
-           params: { user: users(:sam).id }
+           params: {
+             user: users(:sam).id,
+             friend: users(:dean).id
+           }
     end
     assert_response :redirect
 
@@ -45,12 +54,18 @@ class FriendRequestFlowTest < ActionDispatch::IntegrationTest
     sam = login(:sam)
 
     dean.post friend_requests_path,
-              params: { user: users(:sam).id }
+              params: {
+                user: users(:sam).id,
+                friend: users(:dean).id
+              }
     dean.assert_response :redirect
     assert_equal 'Sent friend request!', dean.flash[:notice]
 
     sam.post friend_requests_path,
-             params: { user: users(:dean).id }
+             params: {
+               user: users(:dean).id,
+               friend: users(:sam).id
+             }
     sam.assert_response :redirect
     assert_equal 'Unable to send friend request.', sam.flash[:alert]
   end
