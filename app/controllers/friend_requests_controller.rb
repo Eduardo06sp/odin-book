@@ -1,11 +1,11 @@
 class FriendRequestsController < ApplicationController
-  after_action :notify_user, only: :create
+  around_action :complete_friend_request, only: :create
 
   def create
     user = User.find_by(id: params[:user])
     new_friend_request = user.friend_requests.build(friend_id: current_user.id)
 
-    if new_friend_request.save
+    if new_friend_request.save!
       flash[:notice] = 'Sent friend request!'
     else
       flash[:alert] = 'Unable to send friend request.'
@@ -33,5 +33,15 @@ class FriendRequestsController < ApplicationController
                                  "#{friend.email}"\
                                  '</span>'\
                                  ' sent you a friend request.')
+  end
+
+  def complete_friend_request
+    ActiveRecord::Base.transaction do
+      yield
+      notify_user
+    end
+  rescue ActiveRecord::RecordInvalid
+    flash[:alert] = 'Unable to send friend request.'
+    redirect_back_or_to root_path
   end
 end
