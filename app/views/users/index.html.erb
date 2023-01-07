@@ -21,7 +21,7 @@
 
         <%= button_to 'Cancel Friend Request', friend_request_path(friend_request), params: { user: user, friend: current_user }, method: :delete %>
       <% else %>
-        <%= user.email %><%= button_to 'Send Friend Request', friend_requests_path, params: { user: } %>
+        <%= user.email %><%= button_to 'Send Friend Request', friend_requests_path, params: { user:, friend: current_user } %>
       <% end %>
     </li>
   <% end %>
