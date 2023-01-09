@@ -5,12 +5,9 @@ class FriendRequestsController < ApplicationController
     user = User.find_by(id: params[:user])
     new_friend_request = user.friend_requests.build(friend_id: current_user.id)
 
-    if new_friend_request.save!
-      flash[:notice] = 'Sent friend request!'
-    else
-      flash[:alert] = 'Unable to send friend request.'
-    end
+    new_friend_request.save!
 
+    flash[:notice] = 'Sent friend request!'
     redirect_back_or_to root_path
   end
 
