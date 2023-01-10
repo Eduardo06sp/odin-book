@@ -1,24 +1,5 @@
-# README
+# Odinbook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Work-in-progress.** This README will look much more magnificent once the project is complete.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Sneak peek: it's an app that replicates the functionality of a typical social media website!
