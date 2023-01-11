@@ -8,7 +8,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   # end
 
   test 'can add friend' do
-    friend_counts = %w[users(:dean).friends.count users(:sam).friends.count]
+    friend_counts = 'users(:dean).friends.count users(:sam).friends.count'
+    user_notifications_count = 'users(:dean).notifications.count'
+
     sign_in users(:dean)
 
     post friend_requests_path,
@@ -18,7 +20,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
          }
     assert_response :redirect
 
-    assert_difference(friend_counts) do
+    assert_difference([friend_counts, user_notifications_count]) do
       post friendships_path,
            params: {
              user: users(:sam).id,
