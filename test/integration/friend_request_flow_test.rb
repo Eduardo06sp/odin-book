@@ -10,7 +10,9 @@ class FriendRequestFlowTest < ActionDispatch::IntegrationTest
   test 'can send a friend request' do
     sign_in users(:dean)
 
-    assert_difference('FriendRequest.count') do
+    friend_requests_count = 'users(:sam).friend_requests.count'
+
+    assert_difference(friend_requests_count) do
       post friend_requests_path,
            params: {
              user: users(:sam).id,
