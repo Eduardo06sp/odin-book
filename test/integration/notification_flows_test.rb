@@ -47,4 +47,15 @@ class NotificationFlowsTest < ActionDispatch::IntegrationTest
                  'accepted your friend request! You are now friends!',
                  user_notifications.first.description
   end
+
+  test 'should delete notification' do
+    user_notifications = users(:castiel).notifications
+    notification = user_notifications.first
+
+    sign_in users(:castiel)
+
+    assert_difference('user_notifications.count', -1) do
+      delete notification_path(notification)
+    end
+  end
 end
