@@ -7,3 +7,7 @@
 # two:
 #   description: MyText
 #   user: two
+
+castiel_dummy:
+  description: 'This is a pesky notification!'
+  user: castiel
