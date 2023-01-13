@@ -1,7 +1,7 @@
 <nav>
   <% if user_signed_in? %>
     <%= link_to 'Notifications', notifications_path %><%= current_user.notifications.size %>
-    <%= link_to 'Home', posts_index_path %>
+    <%= link_to 'Home', posts_path %>
     <%= link_to 'Users', users_path %>
     <%= link_to 'Profile', user_path(current_user) %>
     <%= link_to 'Log out', destroy_user_session_path, 'data-turbo-method': :delete %>
