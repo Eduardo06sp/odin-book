@@ -6,7 +6,7 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
   # end
 
   test 'redirects to sign in page if not signed in' do
-    get '/posts/index'
+    get '/posts'
 
     assert_redirected_to new_user_session_path
     follow_redirect!
