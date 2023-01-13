@@ -2,5 +2,6 @@
 <ul>
   <% @notifications.each do |notification| %>
     <li><%= sanitize notification.description %></li>
+    <%= button_to "Remove", notification_path(notification), method: :delete %>
   <% end %>
 </ul>
