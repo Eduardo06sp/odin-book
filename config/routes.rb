@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[index show]
   end
 
-  resources :posts, only: %i[index]
+  resources :posts, only: %i[new create index]
 
   resources :friend_requests, only: %i[create destroy]
   resources :friendships, only: %i[create destroy]
