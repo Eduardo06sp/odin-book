@@ -10,4 +10,6 @@ class User < ApplicationRecord
            through: :friendships
 
   has_many :notifications
+
+  has_many :posts
 end
