@@ -9,6 +9,11 @@ class User < ApplicationRecord
   has_many :friends,
            through: :friendships
 
+  has_many :likes
+  has_many :liked_posts,
+           through: :likes,
+           source: :post
+
   has_many :notifications
 
   has_many :posts
