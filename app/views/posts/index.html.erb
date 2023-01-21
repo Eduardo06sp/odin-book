@@ -3,6 +3,13 @@
 
 <ul>
 <% @posts.each do |post| %>
-  <li><%= post.content %></li>
+  <li>
+    <%= post.content %>
+    <% if post.liking_users.include?(current_user) %>
+      <%# button_to 'Unlike', likes_path, params: { post:, user: current_user } %>
+    <% else %>
+      <%= button_to 'Like', likes_path, params: { post:, user: current_user } %>
+    <% end %>
+  </li>
 <% end %>
 </ul>
