@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :posts, only: %i[new create index]
 
+  resources :likes, only: %i[create]
+
   resources :friend_requests, only: %i[create destroy]
   resources :friendships, only: %i[create destroy]
 
