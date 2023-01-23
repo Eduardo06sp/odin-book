@@ -13,4 +13,16 @@ class LikesController < ApplicationController
 
     redirect_to root_path
   end
+
+  def destroy
+    like = Like.find(params[:id])
+
+    if like.destroy
+      flash[:notice] = 'Unliked post.'
+    else
+      flash[:alert] = 'Unable to dislike post.'
+    end
+
+    redirect_to root_path
+  end
 end
