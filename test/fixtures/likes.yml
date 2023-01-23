@@ -7,3 +7,7 @@
 # two:
 #   user: two
 #   post: two
+
+dean_like:
+  post: dean_post
+  user: dean
