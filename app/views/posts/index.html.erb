@@ -11,6 +11,12 @@
     <% else %>
       <%= button_to 'Like', likes_path, params: { post:, user: current_user } %>
     <% end %>
+
+    <%= form_with model: post.comments.new do |form| %>
+      <%= hidden_field_tag 'comment[post_id]', post.id %>
+      <%= form.text_field :content %>
+      <%= form.submit %>
+    <% end %>
   </li>
 <% end %>
 </ul>
