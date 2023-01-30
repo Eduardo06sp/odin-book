@@ -17,6 +17,12 @@
       <%= form.text_field :content %>
       <%= form.submit %>
     <% end %>
+
+    <ul>
+      <% post.comments.each do |comment| %>
+        <li><%= comment.content %></li>
+      <% end %>
+    </ul>
   </li>
 <% end %>
 </ul>
