@@ -19,7 +19,7 @@
     <% end %>
     </p>
 
-    <%= form_with model: post.comments.new do |form| %>
+    <%= form_with model: Comment.new do |form| %>
       <%= hidden_field_tag 'comment[post_id]', post.id %>
       <%= form.text_field :content %>
       <%= form.submit %>
