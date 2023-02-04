@@ -4,6 +4,7 @@
 <ul>
 <% @posts.each do |post| %>
   <li>
+    <%= post.user.email %>
     <%= post.content %>
     <% if post.liking_users.include?(current_user) %>
       <% like = Like.find_by(post:, user: current_user) %>
