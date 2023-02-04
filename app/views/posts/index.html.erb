@@ -12,6 +12,12 @@
     <% else %>
       <%= button_to 'Like', likes_path, params: { post:, user: current_user } %>
     <% end %>
+    <p>
+    Liked by
+    <% post.liking_users.each do |user| %>
+      <%= user.email %>
+    <% end %>
+    </p>
 
     <%= form_with model: post.comments.new do |form| %>
       <%= hidden_field_tag 'comment[post_id]', post.id %>
