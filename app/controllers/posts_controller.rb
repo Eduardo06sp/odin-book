@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.user_and_friends(current_user).order(created_at: :desc)
   end
 
   def new
