@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
+    get 'profile', action: :show, controller: 'users'
     resources :users, only: %i[index show]
   end
 
