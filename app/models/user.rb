@@ -22,4 +22,6 @@ class User < ApplicationRecord
   has_many :commented_posts,
            through: :comments,
            source: :post
+
+  has_one_attached :avatar
 end
