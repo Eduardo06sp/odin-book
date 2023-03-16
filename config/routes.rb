@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   root 'posts#index'
 
-  devise_for :users
-
   devise_scope :user do
     get 'profile', action: :show, controller: 'users'
-    resources :users, only: %i[index show]
+    devise_for :users, controllers: {registrations: 'users/registrations'}
   end
+
+  resources :users, only: %i[index show]
 
   resources :posts, only: %i[new create index]
 
