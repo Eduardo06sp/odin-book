@@ -25,13 +25,19 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  validate :avatar_format, if: -> { avatar.attached? }
+  validate :avatar_format, :avatar_size, if: -> { avatar.attached? }
 
   private
 
   def avatar_format
     unless avatar.blob.image?
       errors.add(:base, 'Attached file must be an image')
+    end
+  end
+
+  def avatar_size
+    if avatar.blob.byte_size > 5.megabytes
+      errors.add(:base, 'Attached file size must be less than 5 megabytes')
     end
   end
 end
