@@ -24,4 +24,14 @@ class User < ApplicationRecord
            source: :post
 
   has_one_attached :avatar
+
+  validate :avatar_format, if: -> { avatar.attached? }
+
+  private
+
+  def avatar_format
+    unless avatar.blob.image?
+      errors.add(:base, 'Attached file must be an image')
+    end
+  end
 end
