@@ -3,3 +3,10 @@
 <% if current_user.avatar.attached? %>
   <%= image_tag current_user.avatar.representation(resize_to_fill: [180, 180]) %>
 <% end %>
+<p>Welcome to your profile, <%= current_user.username.empty? ? current_user.email : current_user.username %></p>
+
+<p>Biography:</p> <p><%= current_user.biography %></p>
+<p>Real Name:</p> <p><%= current_user.real_name %></p>
+<p>Country:</p> <p><%= current_user.country %></p>
+<p>State:</p> <p><%= current_user.state %></p>
+<p>City:</p> <p><%= current_user.city %></p>
