@@ -10,3 +10,14 @@
 <p>Country:</p> <p><%= current_user.country %></p>
 <p>State:</p> <p><%= current_user.state %></p>
 <p>City:</p> <p><%= current_user.city %></p>
+
+<h2>Posts</h2>
+<% current_user.posts.each do |post| %>
+  <p>------------Post------------------<p>
+  <p><%= post.content %></p>
+  <p>Comments</p>
+  <% post.comments.each do |comment| %>
+    <p><%= comment.content %></p>
+  <% end %>
+  <p>----------------------------------<p>
+<% end %>
