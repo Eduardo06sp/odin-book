@@ -33,3 +33,5 @@
 # Ignore linter configuration files
 .standard.yml
 .standard_rubocop_extensions.yml
+
+/config/credentials/production.key
