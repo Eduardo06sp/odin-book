@@ -51,6 +51,7 @@ gem "aws-sdk-s3", require: false
 gem "ruby-vips"
 
 gem 'devise'
+gem 'omniauth-github'
 
 gem 'capistrano'
 gem 'capistrano-rails'
