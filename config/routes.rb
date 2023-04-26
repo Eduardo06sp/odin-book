@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'profile', action: :show, controller: 'users'
-    devise_for :users, controllers: {registrations: 'users/registrations'}
+    devise_for :users, controllers: {registrations: 'users/registrations',
+                                     omniauth_callbacks: 'users/omniauth_callbacks'}
   end
 
   resources :users, only: %i[index show]
