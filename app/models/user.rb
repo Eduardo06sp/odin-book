@@ -28,6 +28,14 @@ class User < ApplicationRecord
 
   validate :avatar_format, :avatar_size, if: -> { avatar.attached? }
 
+  def self.from_omniauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.email = auth.info.email
+      user.username = auth.info.nickname
+      user.password = Devise.friendly_token[0, 20]
+    end
+  end
+
   private
 
   def avatar_format
