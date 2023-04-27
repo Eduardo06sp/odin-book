@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  require 'open-uri'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,6 +35,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.username = auth.info.nickname
       user.password = Devise.friendly_token[0, 20]
+      user.avatar.attach(io: URI.parse(auth.info.image).open, filename: 'github-avatar')
     end
   end
 
