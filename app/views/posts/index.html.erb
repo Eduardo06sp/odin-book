@@ -5,6 +5,9 @@
 <% @posts.each do |post| %>
   <li>
     <%= post.user.email %>
+    <% if post.image.attached? %>
+      <%= image_tag post.image.representation(resize_to_fit: [nil, 500]) %>
+    <% end %>
     <%= post.content %>
     <% if post.liking_users.include?(current_user) %>
       <% like = Like.find_by(post:, user: current_user) %>
