@@ -11,5 +11,7 @@ class Post < ApplicationRecord
            through: :comments,
            source: :user
 
+  has_one_attached :image
+
   scope :user_and_friends, ->(user) { where(user_id: [[user.id] + user.friend_ids]) }
 end
