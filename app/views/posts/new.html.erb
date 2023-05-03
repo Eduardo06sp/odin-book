@@ -1,4 +1,5 @@
 <%= form_with model: @post do |form| %>
+  <%= form.file_field :image %>
   <%= form.text_area :content %>
   <%= form.submit %>
 <% end %>
