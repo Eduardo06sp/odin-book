@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  require 'open-uri'
+
   def index
     @posts = Post.user_and_friends(current_user).order(created_at: :desc)
   end
@@ -9,6 +11,10 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+
+    if params[:post][:image_url].present?
+      attach_image_from_url
+    end
 
     if @post.save
       flash[:notice] = 'Successfully created new post.'
@@ -23,5 +29,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, :image, :image_url)
+  end
+
+  def attach_image_from_url
+    @post.image.attach(io: URI.parse(params[:post][:image_url]).open, filename: 'post-image')
   end
 end
