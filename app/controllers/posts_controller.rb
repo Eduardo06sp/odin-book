@@ -12,8 +12,14 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
 
-    if params[:post][:image_url].present?
-      attach_image_from_url
+    begin
+      if params[:post][:image_url].present?
+        attach_image_from_url
+      end
+    rescue SocketError
+      flash[:alert] = 'Unable to access image URL provided.'
+      render :new, status: :unprocessable_entity
+      return
     end
 
     if @post.save
