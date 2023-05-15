@@ -1,7 +1,7 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 <% if current_user.avatar.attached? %>
-  <%= image_tag current_user.avatar.representation(resize_to_fill: [180, 180]) %>
+  <%= image_tag current_user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
 <% end %>
 <p>Welcome to your profile, <%= current_user.username.present? ? current_user.username : current_user.email %></p>
 
