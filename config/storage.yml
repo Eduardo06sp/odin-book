@@ -6,6 +6,14 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+backblaze_test:
+  service: s3
+  endpoint: https://s3.us-west-004.backblazeb2.com
+  access_key_id: <%= Rails.application.credentials.dig(:backblaze, :access_key) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:backblaze, :secret) %>
+  bucket: odin-book-test
+  region: us-west-004
+
 backblaze:
   service: s3
   endpoint: https://s3.us-west-004.backblazeb2.com
