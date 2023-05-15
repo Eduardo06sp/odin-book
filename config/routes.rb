@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index show]
 
-  resources :posts, only: %i[new create index]
+  resources :posts, only: %i[new create index destroy]
 
   resources :likes, only: %i[create destroy]
 

@@ -4,6 +4,12 @@
 <ul>
 <% @posts.each do |post| %>
   <li>
+    <% if current_user.id == post.user_id %>
+      <%= link_to 'Delete this post', post_path(post.id), data: {
+        turbo_method: :delete,
+        turbo_confirm: 'Are you sure you want to delete this post?' } %>
+    <% end %>
+
     <%= post.user.email %>
     <% if post.image.attached? %>
       <%= image_tag post.image.representation(resize_to_fit: [nil, 500]).processed.url %>
