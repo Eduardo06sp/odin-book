@@ -4,7 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.file_field :avatar %>
+    <%= f.file_field :avatar, accept: 'image/png, image/jpeg'%>
   </div>
 
   <div class="field">
