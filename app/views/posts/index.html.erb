@@ -1,5 +1,11 @@
 <h2>Your feed</h2>
-<%= link_to 'Create new post', new_post_path %>
+
+<%= form_with model: @post do |form| %>
+  <%= form.url_field :image_url %>
+  <%= form.file_field :image %>
+  <%= form.text_area :content %>
+  <%= form.submit %>
+<% end %>
 
 <ul>
 <% @posts.each do |post| %>

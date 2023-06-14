@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   require 'open-uri'
 
   def index
+    @post = Post.new
     @posts = Post.user_and_friends(current_user).order(created_at: :desc)
   end
 
