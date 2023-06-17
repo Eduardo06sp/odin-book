@@ -17,7 +17,7 @@ class UsersTest < ApplicationSystemTestCase
 
     click_button 'Sign up'
 
-    assert_text 'Posts#index'
+    assert_text 'Your feed'
   end
 
   test 'signing in' do
@@ -29,6 +29,6 @@ class UsersTest < ApplicationSystemTestCase
 
     click_button 'Log in'
 
-    assert_text 'Posts#index'
+    assert_text 'Your feed'
   end
 end
