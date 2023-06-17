@@ -7,14 +7,14 @@
   <% end %>
   </div>
 
-  <%= form_with model: @post, class: 'new-post-form' do |form| %>
+  <%= form_with model: @post, class: 'new-post-form', data: { controller: "modal" } do |form| %>
     <%= form.text_area :content %>
-    <dialog>
+    <dialog data-modal-target="modal">
       <%= form.url_field :image_url %>
       <%= form.file_field :image %>
-      <button type="button">Cancel</button>
+      <button type="button" data-action="click->modal#close">Cancel</button>
     </dialog>
-    <button type="button">Attach Image</button>
+    <button type="button" data-action="click->modal#display">Attach Image</button>
     <%= form.submit %>
   <% end %>
 </div>
