@@ -3,3 +3,36 @@
 body.posts h2 {
   margin-bottom: 6px;
 }
+
+body.posts .current-user-avatar {
+  flex-shrink: 0;
+  padding: 5px 10px 0 0;
+  width: clamp(40px, 20%, 100px);
+}
+
+body.posts .current-user-avatar img {
+  width: 100%;
+}
+
+body.posts .new-post-container {
+  display: flex;
+  min-height: 150px;
+  padding: 0 12px;
+}
+
+body.posts .new-post-form {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1fr 50px;
+  gap: 6px;
+}
+
+body.posts .new-post-form textarea {
+  min-height: 70px;
+}
+
+body.posts .new-post-form input[type="submit"] {
+  justify-self: end;
+  height: 40px;
+  width: 130px;
+}
