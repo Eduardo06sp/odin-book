@@ -12,7 +12,10 @@
     <dialog data-modal-target="modal">
       <%= form.url_field :image_url %>
       <%= form.file_field :image %>
-      <button type="button" data-action="click->modal#close">Cancel</button>
+      <div class="new-post-attachment-options">
+        <button type="button">Save</button>
+        <button type="button" data-action="click->modal#close">Cancel</button>
+      </div>
     </dialog>
     <button type="button" data-action="click->modal#display">Attach Image</button>
     <%= form.submit %>
