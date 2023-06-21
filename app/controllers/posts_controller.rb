@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       end
     rescue SocketError
       flash[:alert] = 'Unable to access image URL provided.'
-      render :new, status: :unprocessable_entity
+      redirect_back_or_to root_path
       return
     end
 
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = 'Unable to create post.'
-      render :new, status: :unprocessable_entity
+      redirect_back_or_to root_path
     end
   end
 
