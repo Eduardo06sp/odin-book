@@ -66,3 +66,13 @@ body.posts .new-post-form input[type="submit"] {
   height: 40px;
   width: 130px;
 }
+
+/* POSTS */
+
+body.posts .post-avatar {
+  width: clamp(40px, 20%, 100px);
+}
+
+body.posts .post-avatar img {
+  width: 100%;
+}
