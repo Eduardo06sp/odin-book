@@ -69,10 +69,51 @@ body.posts .new-post-form input[type="submit"] {
 
 /* POSTS */
 
+body.posts .post-heading {
+  display: flex;
+  margin-bottom: 50px;
+}
+
 body.posts .post-avatar {
+  flex-shrink: 0;
   width: clamp(40px, 20%, 100px);
 }
 
 body.posts .post-avatar img {
   width: 100%;
+}
+
+body.posts .post-image img {
+  width: 100%;
+}
+
+body.posts .post-content {
+  margin-bottom: 50px;
+}
+
+body.posts .post-like-unlike-form {
+  margin-bottom: 15px;
+}
+
+body.posts .post-like-unlike-form button {
+  height: 45px;
+  width: 100px;
+}
+
+body.posts .new-comment-form {
+  display: flex;
+}
+
+body.posts .new-comment-form textarea {
+  flex: 1;
+  height: 45px;
+}
+
+body.posts .new-comment-form input[type="submit"] {
+  height: 45px;
+  width: 150px;
+}
+
+body.posts .post-comments {
+  margin: 10px 0 50px 0;
 }
