@@ -117,3 +117,26 @@ body.posts .new-comment-form input[type="submit"] {
 body.posts .post-comments {
   margin: 10px 0 50px 0;
 }
+
+body.posts .comment {
+  column-gap: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  row-gap: 5px;
+}
+
+body.posts .comment-avatar {
+  grid-area: 1 / 1 / 3 / 2;
+  padding-top: 5px;
+  width: 40px;
+}
+
+body.posts .comment-avatar img {
+  width: 100%;
+}
+
+body.posts .comment-content {
+  grid-area: 2 / 2/ 3 / 3;
+  margin-bottom: 15px;
+}
