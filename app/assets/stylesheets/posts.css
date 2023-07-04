@@ -1,6 +1,7 @@
 /* INDEX */
 
 body.posts h2 {
+  padding-left: 5px;
   margin-bottom: 6px;
 }
 
@@ -69,9 +70,15 @@ body.posts .new-post-form input[type="submit"] {
 
 /* POSTS */
 
+body.posts .post > * {
+  margin: 0 5px;
+}
+
 body.posts .post-heading {
+  align-items: start;
+  column-gap: 5px;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 body.posts .post-avatar {
@@ -83,12 +90,20 @@ body.posts .post-avatar img {
   width: 100%;
 }
 
+body.posts .post-image {
+  margin: 0;
+}
+
 body.posts .post-image img {
   width: 100%;
 }
 
 body.posts .post-content {
-  margin-bottom: 50px;
+  margin-bottom: 5px;
+}
+
+body.posts .post-liked-by {
+  margin-top: 35px;
 }
 
 body.posts .post-like-unlike-form {
@@ -102,6 +117,7 @@ body.posts .post-like-unlike-form button {
 
 body.posts .new-comment-form {
   display: flex;
+  margin-bottom: 15px;
 }
 
 body.posts .new-comment-form textarea {
@@ -115,7 +131,7 @@ body.posts .new-comment-form input[type="submit"] {
 }
 
 body.posts .post-comments {
-  margin: 10px 0 50px 0;
+  margin: inherit 10px inherit 50px;
 }
 
 body.posts .comment {
