@@ -71,7 +71,9 @@
           <% end %>
         </div>
 
-        <button type="button" class="comments-toggle"  data-action="click->comment#toggleVisibility">X Comments</button>
+        <button type="button" class="comments-toggle"  data-action="click->comment#toggleVisibility">
+          <%= pluralize(post.comments.length, 'Comment') %>
+        </button>
       </div>
 
       <div class="comments-section" data-controller="comment">
