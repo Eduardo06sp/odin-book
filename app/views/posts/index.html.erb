@@ -61,18 +61,20 @@
       <% end %>
       </p>
 
-      <div class="post-like-unlike-form">
-        <% if post.liking_users.include?(current_user) %>
-          <% like = Like.find_by(post:, user: current_user) %>
-          <%= button_to 'Unlike', like_path(like), method: :delete, class: 'post-unlike-button' %>
-        <% else %>
-          <%= button_to 'Like', likes_path, params: { post:, user: current_user }, class: 'post-like-button'%>
-        <% end %>
+      <div class="post-interaction-buttons">
+        <div class="post-like-unlike-form">
+          <% if post.liking_users.include?(current_user) %>
+            <% like = Like.find_by(post:, user: current_user) %>
+            <%= button_to 'Unlike', like_path(like), method: :delete, class: 'post-unlike-button' %>
+          <% else %>
+            <%= button_to 'Like', likes_path, params: { post:, user: current_user }, class: 'post-like-button'%>
+          <% end %>
+        </div>
+
+        <button type="button" class="comments-toggle"  data-action="click->comment#toggleVisibility">X Comments</button>
       </div>
 
       <div class="comments-section" data-controller="comment">
-        <button type="button" class="comments-toggle"  data-action="click->comment#toggleVisibility">X Comments</button>
-
         <%= form_with model: Comment.new, class: 'new-comment-form hidden', data: { 'comment-target': 'newCommentForm' } do |form| %>
           <%= hidden_field_tag 'comment[post_id]', post.id %>
           <%= form.text_area :content %>

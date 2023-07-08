@@ -106,13 +106,25 @@ body.posts .post-liked-by {
   margin-top: 35px;
 }
 
-body.posts .post-like-unlike-form {
+body.posts .post-like-unlike-form,
+body.posts .post-like-unlike-form form,
+body.posts .post-like-unlike-form button {
+  height: 100%;
+}
+
+body.posts .post-like-unlike-form,
+body.posts .comments-toggle {
+  flex: 1;
+}
+
+body.posts .post-interaction-buttons {
+  display: flex;
+  height: 45px;
   margin-bottom: 15px;
 }
 
 body.posts .post-like-unlike-form button {
-  height: 45px;
-  width: 100px;
+  width: 100%;
 }
 
 body.posts .new-comment-form {
