@@ -25,7 +25,7 @@
 <div class="feed-posts">
   <% @posts.each do |post| %>
 
-    <div class="post">
+    <div class="post" data-controller="comment">
       <div class="post-heading">
         <div class="post-avatar">
           <% if post.user.avatar.attached? %>
@@ -76,7 +76,7 @@
         </button>
       </div>
 
-      <div class="comments-section" data-controller="comment">
+      <div class="comments-section">
         <%= form_with model: Comment.new, class: 'new-comment-form hidden', data: { 'comment-target': 'newCommentForm' } do |form| %>
           <%= hidden_field_tag 'comment[post_id]', post.id %>
           <%= form.text_area :content %>
