@@ -1,10 +1,10 @@
 <h2>All users</h2>
 
-<ul>
+<div class="users-container">
   <% @users.each do |user| %>
     <% next if current_user.id == user.id %>
 
-    <li>
+    <div class="user-listing">
       <% if @friend_requester_ids.include?(user.id) %>
         <% friend_request = FriendRequest.find_sole_by(user_id: current_user, friend_id: user) %>
 
@@ -22,6 +22,6 @@
       <% else %>
         <%= user.email %><%= button_to 'Send Friend Request', friend_requests_path, params: { user:, friend: current_user } %>
       <% end %>
-    </li>
+      </div>
   <% end %>
-</ul>
+</div>
