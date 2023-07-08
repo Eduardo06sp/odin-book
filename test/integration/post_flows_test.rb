@@ -30,6 +30,6 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
 
-    assert_select 'li', /I am out of salt!/
+    assert_select 'p', /I am out of salt!/
   end
 end
