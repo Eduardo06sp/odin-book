@@ -5,6 +5,11 @@
     <% next if current_user.id == user.id %>
 
     <div class="user-listing">
+
+      <% if user.avatar.attached? %>
+        <%= image_tag user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
+      <% end %>
+
       <% if @friend_requester_ids.include?(user.id) %>
         <% friend_request = FriendRequest.find_sole_by(user_id: current_user, friend_id: user) %>
 
