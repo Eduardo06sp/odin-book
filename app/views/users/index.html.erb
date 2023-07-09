@@ -10,22 +10,22 @@
         <%= image_tag user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
       <% end %>
 
+      <p><%= user.email %></p>
+
       <% if @friend_requester_ids.include?(user.id) %>
         <% friend_request = FriendRequest.find_sole_by(user_id: current_user, friend_id: user) %>
 
-        <%= user.email %>
         <%= button_to 'Accept Friend Request', friendships_path, params: { user: current_user, friend: user } %>
         <%= button_to 'Decline Friend Request', friend_request_path(friend_request), params: { user: current_user, friend: user }, method: :delete %>
       <% elsif @friend_ids.include?(user.id) %>
         <% friendship = Friendship.find_sole_by(user_id: current_user, friend_id: user) %>
-        <%= user.email %>
         <%= button_to 'Unfriend', friendship_path(friendship), params: { user: current_user, friend: user }, method: :delete %>
       <% elsif @friend_request_recipient_ids.include?(user.id) %>
         <% friend_request = FriendRequest.find_sole_by(user_id: user, friend_id: current_user) %>
 
         <%= button_to 'Cancel Friend Request', friend_request_path(friend_request), params: { user: user, friend: current_user }, method: :delete %>
       <% else %>
-        <%= user.email %><%= button_to 'Send Friend Request', friend_requests_path, params: { user:, friend: current_user } %>
+        <%= button_to 'Send Friend Request', friend_requests_path, params: { user:, friend: current_user } %>
       <% end %>
       </div>
   <% end %>
