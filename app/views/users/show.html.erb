@@ -1,6 +1,5 @@
 <h2>Your profile</h2>
 
-<p>Find me in app/views/users/show.html.erb</p>
 <% if current_user.avatar.attached? %>
   <%= image_tag current_user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
 <% end %>
