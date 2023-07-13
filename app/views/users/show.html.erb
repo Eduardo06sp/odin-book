@@ -1,16 +1,23 @@
 <h2>Your profile</h2>
 
-<% if current_user.avatar.attached? %>
-  <%= image_tag current_user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
-<% end %>
-<%= link_to 'Edit Profile', edit_user_registration_path %>
-<p>Welcome to your profile, <%= current_user.username.present? ? current_user.username : current_user.email %></p>
+<div class="profile-heading">
+  <div class="profile-avatar">
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
+    <% end %>
+  </div>
 
-<p>Biography:</p> <p><%= current_user.biography %></p>
-<p>Real Name:</p> <p><%= current_user.real_name %></p>
-<p>Country:</p> <p><%= current_user.country %></p>
-<p>State:</p> <p><%= current_user.state %></p>
-<p>City:</p> <p><%= current_user.city %></p>
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
+  <p><%= current_user.username.present? ? current_user.username : current_user.email %></p>
+</div>
+
+<div class="profile-details">
+  <p>Biography:</p> <p><%= current_user.biography %></p>
+  <p>Real Name:</p> <p><%= current_user.real_name %></p>
+  <p>Country:</p> <p><%= current_user.country %></p>
+  <p>State:</p> <p><%= current_user.state %></p>
+  <p>City:</p> <p><%= current_user.city %></p>
+</div>
 
 <h2>Posts</h2>
 <% current_user.posts.each do |post| %>
