@@ -1,31 +1,26 @@
-<h2>Your profile</h2>
+<h2><%= @user.username.present? ? @user.username : @user.email %>'s profile</h2>
 
 <div class="profile-heading">
   <div class="profile-avatar">
-    <% if current_user.avatar.attached? %>
-      <%= image_tag current_user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
     <% end %>
   </div>
 
-  <%= link_to 'Edit Profile', edit_user_registration_path %>
-  <p><%= current_user.username.present? ? current_user.username : current_user.email %></p>
+  <% if @user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_registration_path %>
+  <% end %>
+
+  <p><%= @user.username.present? ? @user.username : @user.email %></p>
 </div>
 
 <div class="profile-details">
-  <p>Biography:</p> <p><%= current_user.biography %></p>
-  <p>Real Name:</p> <p><%= current_user.real_name %></p>
-  <p>Country:</p> <p><%= current_user.country %></p>
-  <p>State:</p> <p><%= current_user.state %></p>
-  <p>City:</p> <p><%= current_user.city %></p>
+  <p>Biography:</p> <p><%= @user.biography %></p>
+  <p>Real Name:</p> <p><%= @user.real_name %></p>
+  <p>Country:</p> <p><%= @user.country %></p>
+  <p>State:</p> <p><%= @user.state %></p>
+  <p>City:</p> <p><%= @user.city %></p>
 </div>
 
-<h2>Posts</h2>
-<% current_user.posts.each do |post| %>
-  <p>------------Post------------------<p>
-  <p><%= post.content %></p>
-  <p>Comments</p>
-  <% post.comments.each do |comment| %>
-    <p><%= comment.content %></p>
-  <% end %>
-  <p>----------------------------------<p>
-<% end %>
+<h2><%= @user.username.present? ? @user.username : @user.email %>'s posts</h2>
+<%=  render partial: 'post', collection: @posts %>

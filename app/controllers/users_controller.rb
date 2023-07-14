@@ -9,5 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    user_id = params[:id] ||= current_user.id
+    @user = User.find(user_id)
+    @posts = @user.posts.order(created_at: :desc)
   end
 end
