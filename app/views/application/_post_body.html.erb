@@ -1,0 +1,18 @@
+<p class="post-content"><%= post.content %></p>
+
+<% if post.image.attached? %>
+  <div class="post-image">
+    <%= image_tag post.image.representation(resize_to_fit: [nil, 500]).processed.url %>
+  </div>
+<% end %>
+
+<p class="post-liked-by">
+<% if post.liking_users.length > 0 %>
+  Liked by
+  <% post.liking_users.each do |user| %>
+    <%= user.username.present? ? post.user.username : post.user.email %>
+  <% end %>
+<% else %>
+  Be the first to like this post!
+<% end %>
+</p>

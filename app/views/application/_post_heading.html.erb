@@ -1,0 +1,15 @@
+<div class="post-heading">
+  <div class="post-avatar">
+    <% if post.user.avatar.attached? %>
+      <%= image_tag post.user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
+    <% end %>
+  </div>
+
+  <p><%= post.user.username.present? ? post.user.username : post.user.email %></p>
+
+  <% if current_user.id == post.user_id %>
+    <%= link_to 'Delete this post', post_path(post.id), data: {
+      turbo_method: :delete,
+      turbo_confirm: 'Are you sure you want to delete this post?' } %>
+  <% end %>
+</div>
