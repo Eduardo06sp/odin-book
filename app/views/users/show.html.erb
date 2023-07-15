@@ -15,11 +15,11 @@
 </div>
 
 <div class="profile-details">
-  <p>Biography:</p> <p><%= @user.biography %></p>
-  <p>Real Name:</p> <p><%= @user.real_name %></p>
-  <p>Country:</p> <p><%= @user.country %></p>
-  <p>State:</p> <p><%= @user.state %></p>
-  <p>City:</p> <p><%= @user.city %></p>
+  <% @user_details.each do |column_name, info| %>
+    <% if info.present? %>
+      <p><%= column_name.to_s.humanize %>:</p> <p><%= info %></p>
+    <% end %>
+  <% end %>
 </div>
 
 <h2><%= @user.username.present? ? @user.username : @user.email %>'s posts</h2>
