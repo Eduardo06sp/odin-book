@@ -1,0 +1,13 @@
+body.notifications h2 {
+  padding-left: 5px;
+}
+
+body.notifications .notifications-list {
+  padding: 0 5px;
+}
+
+body.notifications .notification button {
+  height: 45px;
+  margin-top: 5px;
+  padding: 0 25px;
+}

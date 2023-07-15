@@ -1,7 +1,9 @@
 <h2>Your notifications</h2>
 <div class="notifications-list">
   <% @notifications.each do |notification| %>
-    <p><%= sanitize notification.description %></p>
-    <%= button_to "Remove", notification_path(notification), method: :delete %>
+    <div class="notification">
+      <p><%= sanitize notification.description %></p>
+      <%= button_to "Remove", notification_path(notification), method: :delete %>
+    </div>
   <% end %>
 </div>
