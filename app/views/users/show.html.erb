@@ -17,7 +17,7 @@
 <div class="profile-details">
   <% @user_details.each do |column_name, info| %>
     <% if info.present? %>
-      <p><%= column_name.to_s.humanize %>:</p> <p><%= info %></p>
+      <p class="column-name"><%= column_name.to_s.humanize %>:</p> <p class="column-info"><%= info %></p>
     <% end %>
   <% end %>
 </div>
