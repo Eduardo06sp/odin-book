@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_path
     assert_response :success
 
-    assert_select 'ul' do
+    assert_select 'div.user-listing' do
       assert_select 'button', text: 'Send Friend Request', count: 2
     end
   end

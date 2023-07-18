@@ -25,7 +25,7 @@ class FriendRequestFlowTest < ActionDispatch::IntegrationTest
 
     get users_path
     assert_response :success
-    assert_select 'ul' do
+    assert_select 'div.user-listing' do
       assert_select 'button', text: 'Cancel Friend Request', count: 1
     end
   end
