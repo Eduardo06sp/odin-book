@@ -1,0 +1,37 @@
+body.sessions {
+  padding: 0 5px;
+}
+
+body.sessions form.new_user {
+  margin: 0 auto;
+  width: min-content;
+}
+
+body.sessions .field {
+  margin-top: 5px;
+  width: 100%;
+}
+
+body.sessions .field input {
+  height: 36px;
+}
+
+body.sessions .field.remember-me {
+  align-items: center;
+  display: flex;
+}
+
+body.sessions input[type="checkbox"] {
+  height: 25px;
+  margin-right: 5px;
+  width: 25px;
+}
+
+body.sessions .actions {
+  text-align: center;
+  margin-top: 5px;
+}
+
+body.sessions .actions input {
+  padding: 12px 23px;
+}
