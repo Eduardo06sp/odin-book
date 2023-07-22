@@ -53,3 +53,20 @@ body.sessions .login-divider::after {
   height: 3px;
   width: 100%;
 }
+
+body.sessions .github-login-button::before {
+  background: url('github-mark.svg') 0 / contain no-repeat;
+  content: '';
+  height: 100%;
+  width: 40px;
+}
+
+body.sessions .github-login-button {
+  align-items: center;
+  column-gap: 5px;
+  display: flex;
+  height: 51px;
+  justify-content: center;
+  margin: 5px auto 0 auto;
+  width: 80%;
+}
