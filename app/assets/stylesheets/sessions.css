@@ -35,3 +35,21 @@ body.sessions .actions {
 body.sessions .actions input {
   padding: 12px 23px;
 }
+
+/* DIVIDER AFTER LOGIN FORM */
+
+body.sessions .login-divider {
+  align-items: center;
+  column-gap: 5px;
+  display: flex;
+  margin-top: 5px;
+}
+
+body.sessions .login-divider::before,
+body.sessions .login-divider::after {
+  background-color: black;
+  content: '';
+  display: inline-block;
+  height: 3px;
+  width: 100%;
+}
