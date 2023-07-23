@@ -1,0 +1,27 @@
+body.registrations {
+  padding: 0 5px;
+}
+
+body.registrations form.new_user {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+body.registrations .field {
+  margin-top: 5px;
+  width: 100%;
+}
+
+body.registrations .field input {
+  height: 36px;
+  width: 100%;
+}
+
+body.registrations .actions {
+  text-align: center;
+  margin-top: 10px;
+}
+
+body.registrations .actions input {
+  padding: 12px 23px;
+}
