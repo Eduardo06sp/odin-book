@@ -13,7 +13,7 @@ body.registrations .field {
 }
 
 body.registrations .field input {
-  height: 36px;
+  min-height: 36px;
   width: 100%;
 }
 
@@ -29,4 +29,11 @@ body.registrations .actions {
 
 body.registrations .actions input {
   padding: 12px 23px;
+}
+
+/* EDIT PROFILE PAGE */
+
+body.registrations .upload input::file-selector-button {
+  height: 40px;
+  width: 100px;
 }
