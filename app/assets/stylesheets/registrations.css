@@ -17,6 +17,11 @@ body.registrations .field input {
   width: 100%;
 }
 
+body.registrations .field textarea {
+  height: 130px;
+  width: 100%;
+}
+
 body.registrations .actions {
   text-align: center;
   margin-top: 10px;
