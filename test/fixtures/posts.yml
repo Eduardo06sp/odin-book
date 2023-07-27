@@ -13,3 +13,7 @@
 dean_post:
   content: There's a new case up north.
   user: dean
+
+sam_post:
+  content: I'm looking for Cas!
+  user: sam
