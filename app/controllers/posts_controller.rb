@@ -21,6 +21,10 @@ class PostsController < ApplicationController
       flash[:alert] = 'Unable to access image URL provided.'
       redirect_back_or_to root_path
       return
+    rescue Errno::ECONNREFUSED
+      flash[:alert] = 'Unable to connect to URL provided. Please double check the URL.'
+      redirect_back_or_to root_path
+      return
     end
 
     if @post.save
