@@ -13,7 +13,7 @@
       <%= form.url_field :image_url, data: { 'modal-target': 'uploadUrl' } %>
       <%= form.file_field :image, data: { 'modal-target': 'uploadFile' } %>
       <div class="new-post-attachment-options">
-        <button type="button" data-action="click->modal#close">Save</button>
+        <button type="button" data-action="click->modal#save">Save</button>
         <button type="button" data-action="click->modal#cancel">Cancel</button>
       </div>
     </dialog>

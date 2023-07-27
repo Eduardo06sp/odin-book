@@ -11,6 +11,14 @@ export default class extends Controller {
     element.value = ''
   }
 
+  save () {
+    if (this.uploadUrlTarget.checkValidity()) {
+      this.close()
+    } else {
+      this.uploadUrlTarget.reportValidity()
+    }
+  }
+
   cancel () {
     this.clearValue(this.uploadUrlTarget)
     this.clearValue(this.uploadFileTarget)
