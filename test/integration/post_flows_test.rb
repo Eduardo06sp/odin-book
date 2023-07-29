@@ -28,4 +28,10 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
 
     assert_select 'p', /I am out of salt!/
   end
+
+  test 'post has image attached' do
+    post_image = posts(:dean_post).image
+
+    assert post_image.attached?
+  end
 end
