@@ -3,10 +3,6 @@ require "test_helper"
 class PostFlowsTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  # test "the truth" do
-  #   assert true
-  # end
-
   test 'redirects to sign in page if not signed in' do
     get '/posts'
 
