@@ -1,0 +1,4 @@
+dean_post_image:
+  name: image
+  record: dean_post (Post)
+  blob: dean_post_image_blob
