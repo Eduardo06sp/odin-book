@@ -15,4 +15,23 @@ class PostsTest < ApplicationSystemTestCase
 
     assert_selector 'p.post-content', text: 'I am looking for Cas!'
   end
+
+  test 'creating image-only post' do
+    sign_in users(:dean)
+
+    visit posts_path
+    assert_selector 'h2', text: 'Your feed'
+
+    click_button 'Attach Image'
+    assert_selector 'dialog'
+
+    attach_file 'post_image', 'test/fixtures/files/picture.jpg'
+
+    click_button 'Save'
+    click_button 'Create Post'
+
+    assert_selector 'img' do |img|
+      assert_match(/picture\.jpg/, img[:src])
+    end
+  end
 end
