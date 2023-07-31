@@ -34,4 +34,27 @@ class PostsTest < ApplicationSystemTestCase
       assert_match(/picture\.jpg/, img[:src])
     end
   end
+
+  test 'creating post with image and text' do
+    sign_in users(:dean)
+
+    visit posts_path
+    assert_selector 'h2', text: 'Your feed'
+
+    fill_in 'post_content', with: 'Look at what I discovered up north.'
+
+    click_button 'Attach Image'
+    assert_selector 'dialog'
+
+    attach_file 'post_image', 'test/fixtures/files/picture.jpg'
+
+    click_button 'Save'
+    click_button 'Create Post'
+
+    assert_selector 'p.post-content', text: 'Look at what I discovered up north.'
+
+    assert_selector 'img' do |img|
+      assert_match(/picture\.jpg/, img[:src])
+    end
+  end
 end
