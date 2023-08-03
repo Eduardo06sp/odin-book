@@ -18,6 +18,13 @@ class UsersController < ApplicationController
       state: @user.state,
       city: @user.city
     }
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user
+      .posts
+      .includes(
+        :liking_users,
+        :comments
+      )
+      .with_attached_image
+      .order(created_at: :desc)
   end
 end
