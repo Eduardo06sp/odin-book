@@ -10,7 +10,7 @@
 <% if post.liking_users.length > 0 %>
   Liked by
   <% post.liking_users.each do |user| %>
-    <%= user.username.present? ? post.user.username : post.user.email %>
+    <%= user.username.present? ? user.username : user.email %>
   <% end %>
 <% else %>
   Be the first to like this post!
