@@ -30,6 +30,16 @@ class User < ApplicationRecord
 
   validate :avatar_format, :avatar_size, if: -> { avatar.attached? }
 
+  def profile_details
+    {
+      biography:,
+      real_name:,
+      country:,
+      state:,
+      city:
+    }
+  end
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email

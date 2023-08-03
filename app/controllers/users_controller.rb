@@ -11,13 +11,7 @@ class UsersController < ApplicationController
   def show
     user_id = params[:id] ||= current_user.id
     @user = User.find(user_id)
-    @user_details = {
-      biography: @user.biography,
-      real_name: @user.real_name,
-      country: @user.country,
-      state: @user.state,
-      city: @user.city
-    }
+    @user_details = @user.profile_details
     @posts = @user
       .posts
       .includes(
