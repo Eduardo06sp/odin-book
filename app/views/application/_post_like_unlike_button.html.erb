@@ -1,0 +1,6 @@
+<% if post.liking_users.include?(current_user) %>
+  <% like = Like.find_by(post:, user: current_user) %>
+  <%= button_to 'Unlike', like_path(like), method: :delete, class: 'post-unlike-button' %>
+<% else %>
+  <%= button_to 'Like', likes_path, params: { post:, user: current_user }, class: 'post-like-button'%>
+<% end %>
