@@ -19,6 +19,7 @@ class LikesController < ApplicationController
 
   def destroy
     like = Like.find(params[:id])
+    @post = like.post
 
     if like.destroy
       flash[:notice] = 'Unliked post.'
@@ -26,6 +27,9 @@ class LikesController < ApplicationController
       flash[:alert] = 'Unable to dislike post.'
     end
 
-    redirect_to root_path
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path }
+    end
   end
 end
