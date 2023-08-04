@@ -1,1 +1,3 @@
 <%= turbo_stream.update dom_id(@post, 'like_unlike_button'), partial: 'post_like_unlike_button', locals: { post: @post } %>
+
+<%= turbo_stream.update dom_id(@post, 'liked_by_info'), partial: 'post_liked_by', locals: { post: @post } %>
