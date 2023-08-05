@@ -3,7 +3,7 @@
     <%= render 'post_like_unlike_button', post: %>
   </div>
 
-  <button type="button" class="comments-toggle"  data-action="click->comment#toggleVisibility">
+  <button type="button" class="comments-toggle"  data-action="click->comment#toggleVisibility" id="<%= dom_id(post, 'comments_toggle') %>">
     <%= pluralize(post.comments.length, 'Comment') %>
   </button>
 </div>
