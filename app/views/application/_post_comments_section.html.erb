@@ -5,17 +5,5 @@
     <%= form.submit %>
   <% end %>
 
-  <div class="post-comments hidden" data-comment-target="comments">
-    <% post.comments.each do |comment| %>
-      <div class="comment">
-        <div class="comment-avatar">
-          <% if comment.user.avatar.attached? %>
-            <%= image_tag comment.user.avatar.representation(resize_to_fill: [180, 180]).processed.url %>
-          <% end %>
-        </div>
-        <p class="comment-name"><%= comment.user.email %></p>
-        <p class="comment-content"><%= comment.content %></p>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'post_comments', post: %>
 </div>
