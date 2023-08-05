@@ -1,9 +1,5 @@
 <div class="comments-section">
-  <%= form_with model: Comment.new, class: 'new-comment-form hidden', data: { 'comment-target': 'newCommentForm' }, namespace: post.id do |form| %>
-    <%= hidden_field_tag 'comment[post_id]', post.id, id: "#{ post.id }_comment[post_id]" %>
-    <%= form.text_area :content %>
-    <%= form.submit %>
-  <% end %>
+  <%= render 'post_comment_new', post: %>
 
   <%= render 'post_comments', post: %>
 </div>
