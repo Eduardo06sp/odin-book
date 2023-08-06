@@ -3,7 +3,9 @@
 
   <%= render 'post_body', post: %>
 
-  <%= render 'post_liked_by', post: %>
+  <%= turbo_frame_tag dom_id(post, 'liked_by_info') do %>
+    <%= render 'post_liked_by', post: %>
+  <% end %>
 
   <%= render 'post_interaction_buttons', post: %>
 

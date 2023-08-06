@@ -1,12 +1,10 @@
-<%= turbo_frame_tag dom_id(post, 'liked_by_info') do %>
-  <p class="post-liked-by">
-  <% if post.liking_users.length > 0 %>
-    Liked by
-    <% post.liking_users.each do |user| %>
-      <%= user.username.present? ? user.username : user.email %>
-    <% end %>
-  <% else %>
-    Be the first to like this post!
+<p class="post-liked-by">
+<% if post.liking_users.length > 0 %>
+  Liked by
+  <% post.liking_users.each do |user| %>
+    <%= user.username.present? ? user.username : user.email %>
   <% end %>
-  </p>
+<% else %>
+  Be the first to like this post!
 <% end %>
+</p>
