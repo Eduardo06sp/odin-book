@@ -39,10 +39,12 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = 'Successfully created new post.'
-      redirect_to root_path
     else
       flash[:alert] = 'Unable to create post.'
-      redirect_back_or_to root_path
+    end
+
+    respond_to do |format|
+      format.html { redirect_back_or_to root_path }
     end
   end
 
