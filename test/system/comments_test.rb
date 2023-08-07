@@ -20,7 +20,6 @@ class CommentsTest < ApplicationSystemTestCase
     click_button 'Create Comment'
 
     assert_button '1 Comment', count: 1
-    click_button '1 Comment'
     assert_selector '.comments-section', text: "I'm the angel you were looking for."
   end
 end
