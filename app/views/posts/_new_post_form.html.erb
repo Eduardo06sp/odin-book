@@ -1,0 +1,13 @@
+<%= form_with model: @post, class: 'new-post-form', data: { controller: "modal" } do |form| %>
+  <%= form.text_area :content %>
+  <dialog data-modal-target="modal">
+    <%= form.url_field :image_url, data: { 'modal-target': 'uploadUrl' } %>
+    <%= form.file_field :image, accept: 'image/png, image/jpeg', data: { 'modal-target': 'uploadFile' } %>
+    <div class="new-post-attachment-options">
+      <button type="button" data-action="click->modal#save">Save</button>
+      <button type="button" data-action="click->modal#cancel">Cancel</button>
+    </div>
+  </dialog>
+  <button type="button" data-action="click->modal#display">Attach Image</button>
+  <%= form.submit %>
+<% end %>
