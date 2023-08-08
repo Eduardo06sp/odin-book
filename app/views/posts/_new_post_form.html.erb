@@ -1,3 +1,4 @@
+<%= turbo_frame_tag 'new_post_form' do %>
 <%= form_with model: @post, class: 'new-post-form', data: { controller: "modal" } do |form| %>
   <%= form.text_area :content %>
   <dialog data-modal-target="modal">
@@ -10,4 +11,5 @@
   </dialog>
   <button type="button" data-action="click->modal#display">Attach Image</button>
   <%= form.submit %>
+<% end %>
 <% end %>
