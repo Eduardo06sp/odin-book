@@ -1,15 +1,15 @@
 <%= turbo_frame_tag 'new_post_form' do %>
   <%= form_with scope: :post, url: posts_path, class: 'new-post-form', data: { controller: "modal" } do |form| %>
-  <%= form.text_area :content, data: { 'modal-target': 'textArea' } %>
-  <dialog data-modal-target="modal">
-    <%= form.url_field :image_url, data: { 'modal-target': 'uploadUrl' } %>
-    <%= form.file_field :image, accept: 'image/png, image/jpeg', data: { 'modal-target': 'uploadFile' } %>
-    <div class="new-post-attachment-options">
-      <button type="button" data-action="click->modal#save">Save</button>
-      <button type="button" data-action="click->modal#cancel">Cancel</button>
-    </div>
-  </dialog>
-  <button type="button" data-action="click->modal#display">Attach Image</button>
-  <%= form.submit 'Create New Post' %>
-<% end %>
+    <%= form.text_area :content, data: { 'modal-target': 'textArea' } %>
+    <dialog data-modal-target="modal">
+      <%= form.url_field :image_url, data: { 'modal-target': 'uploadUrl' } %>
+      <%= form.file_field :image, accept: 'image/png, image/jpeg', data: { 'modal-target': 'uploadFile' } %>
+      <div class="new-post-attachment-options">
+        <button type="button" data-action="click->modal#save">Save</button>
+        <button type="button" data-action="click->modal#cancel">Cancel</button>
+      </div>
+    </dialog>
+    <button type="button" data-action="click->modal#display">Attach Image</button>
+    <%= form.submit 'Create New Post' %>
+  <% end %>
 <% end %>
