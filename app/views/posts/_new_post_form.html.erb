@@ -1,5 +1,5 @@
 <%= turbo_frame_tag 'new_post_form' do %>
-<%= form_with model: @post, class: 'new-post-form', data: { controller: "modal" } do |form| %>
+  <%= form_with scope: :post, url: posts_path, class: 'new-post-form', data: { controller: "modal" } do |form| %>
   <%= form.text_area :content %>
   <dialog data-modal-target="modal">
     <%= form.url_field :image_url, data: { 'modal-target': 'uploadUrl' } %>
