@@ -21,11 +21,15 @@ body.posts .new-post-container {
   padding: 0 12px;
 }
 
+body.posts #new_post_form {
+  flex: 1;
+}
+
 body.posts .new-post-form {
   display: grid;
-  flex: 1;
   grid-template-columns: 1fr 50px;
   gap: 6px;
+  height: 100%;
 }
 
 body.posts .new-post-form textarea {
