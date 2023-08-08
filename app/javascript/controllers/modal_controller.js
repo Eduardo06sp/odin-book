@@ -1,7 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['modal', 'uploadUrl', 'uploadFile']
+  static targets = ['modal', 'uploadUrl', 'uploadFile', 'textArea']
+
+  connect () {
+    this.clearForm()
+  }
 
   display () {
     this.modalTarget.showModal()
@@ -9,6 +13,12 @@ export default class extends Controller {
 
   clearValue (element) {
     element.value = ''
+  }
+
+  clearForm () {
+    this.clearValue(this.textAreaTarget)
+    this.clearValue(this.uploadUrlTarget)
+    this.clearValue(this.uploadFileTarget)
   }
 
   save () {
