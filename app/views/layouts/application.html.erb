@@ -16,8 +16,10 @@
       <%= render "nav_bar" %>
     </header>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div id="flash">
+      <%= render 'flash' %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
