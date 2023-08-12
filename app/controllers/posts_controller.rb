@@ -40,12 +40,16 @@ class PostsController < ApplicationController
     if @post.save
       flash[:notice] = 'Successfully created new post.'
     else
-      flash[:alert] = 'Unable to create post.'
-    end
-
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_back_or_to root_path }
+      respond_to do |format|
+        format.turbo_stream {
+          flash.now[:alert] = 'Unable to create post.'
+          render 'create_error', status: :unprocessable_entity
+        }
+        format.html {
+          flash[:alert] = 'Unable to create post.'
+          redirect_back_or_to root_path
+        }
+      end
     end
   end
 
