@@ -38,7 +38,15 @@ class PostsController < ApplicationController
     end
 
     if @post.save
-      flash[:notice] = 'Successfully created new post.'
+      respond_to do |format|
+        format.turbo_stream {
+          flash.now[:notice] = 'Successfully created new post.'
+        }
+        format.html {
+          flash[:notice] = 'Successfully created new post.'
+          redirect_back_or_to root_path
+        }
+      end
     else
       respond_to do |format|
         format.turbo_stream {
