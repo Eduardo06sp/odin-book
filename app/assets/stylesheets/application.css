@@ -14,6 +14,13 @@
  *= require_self
  */
 
+:root {
+  --page-bg-color: #141f1b;
+  --page-text-color: #eff5f3;
+  --unvisited-link-color: #7692c8;
+  --visited-link-color: #8f76c8;
+}
+
 html {
   box-sizing: border-box;
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -29,7 +36,17 @@ html {
 }
 
 body {
+  background-color: var(--page-bg-color);
+  color: var(--page-text-color);
   font-size: 1.1rem;
+}
+
+a {
+  color: var(--unvisited-link-color);
+}
+
+a:visited {
+  color: var(--visited-link-color);
 }
 
 /* HEADER */
