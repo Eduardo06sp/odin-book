@@ -28,12 +28,12 @@ class PostsController < ApplicationController
         attach_image_from_url
       end
     rescue SocketError
-      flash[:alert] = 'Unable to access image URL provided.'
-      redirect_back_or_to root_path
+      flash.now[:alert] = 'Unable to access image URL provided.'
+      render 'create_error', status: :unprocessable_entity
       return
     rescue Errno::ECONNREFUSED
-      flash[:alert] = 'Unable to connect to URL provided. Please double check the URL.'
-      redirect_back_or_to root_path
+      flash.now[:alert] = 'Unable to connect to URL provided. Please double check the URL.'
+      render 'create_error', status: :unprocessable_entity
       return
     end
 
