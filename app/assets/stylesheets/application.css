@@ -19,6 +19,9 @@
   --page-text-color: #eff5f3;
   --unvisited-link-color: #7692c8;
   --visited-link-color: #8f76c8;
+
+  --card-bg-color: #1b2622;
+  --primary-color: #4a6e73;
 }
 
 html {
@@ -49,6 +52,17 @@ a:visited {
   color: var(--visited-link-color);
 }
 
+button,
+input[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--page-text-color);
+}
+
+textarea {
+  background-color: var(--primary-color);
+  color: var(--page-text-color);
+}
+
 /* HEADER */
 
 header {
@@ -72,6 +86,10 @@ h1 {
 }
 
 /* POSTS */
+
+.post {
+  background-color: var(--card-bg-color);
+}
 
 .post > * {
   margin: 0 5px;
