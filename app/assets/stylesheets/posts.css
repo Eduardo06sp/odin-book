@@ -17,9 +17,11 @@ body.posts .current-user-avatar img {
 
 body.posts .new-post-container {
   background-color: var(--card-bg-color);
+  border-radius: 8px;
   display: flex;
+  margin: 15px 10px;
   min-height: 150px;
-  padding: 0 12px;
+  padding: 6px;
 }
 
 body.posts #new_post_form {
