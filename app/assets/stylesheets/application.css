@@ -146,6 +146,7 @@ h1 {
 }
 
 .post .post-interaction-buttons {
+  column-gap: 20px;
   display: flex;
   height: 45px;
   margin-bottom: 15px;
