@@ -158,12 +158,13 @@ h1 {
 
 .post .new-comment-form {
   display: flex;
+  flex-direction: column;
   margin-bottom: 15px;
+  row-gap: 15px;
 }
 
 .post .new-comment-form textarea {
-  flex: 1;
-  height: 45px;
+  min-height: 105px;
 }
 
 .post .new-comment-form input[type="submit"] {
