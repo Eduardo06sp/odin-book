@@ -39,6 +39,10 @@ body.posts .new-post-form textarea {
   min-height: 70px;
 }
 
+body.posts .new-post-form dialog {
+  background-color: var(--card-bg-color);
+}
+
 body.posts .new-post-form dialog[open] {
   display: flex;
   flex-direction: column;
