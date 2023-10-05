@@ -55,7 +55,7 @@ body.sessions .login-divider::after {
 }
 
 body.sessions .github-login-button::before {
-  background: url('github-mark.svg') 0 / contain no-repeat;
+  background: url('github-mark-white.svg') 0 / contain no-repeat;
   content: '';
   height: 100%;
   width: 40px;
