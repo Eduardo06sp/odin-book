@@ -188,7 +188,7 @@ h1 {
 .post .comment {
   column-gap: 10px;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr min-content;
   grid-template-rows: auto 1fr;
   row-gap: 5px;
 }
