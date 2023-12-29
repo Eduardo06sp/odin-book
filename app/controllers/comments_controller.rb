@@ -14,6 +14,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    redirect_back_or_to root_path, status: :see_other
+  end
+
   private
 
   def comment_params

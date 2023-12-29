@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :notifications, only: %i[index destroy]
 
-  resources :comments, only: %i[create]
+  resources :comments, only: %i[create destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
