@@ -2,6 +2,6 @@
 
 <% if post.image.attached? %>
   <div class="post-image">
-    <%= image_tag post.image.representation(resize_to_fit: [nil, 500]).processed.url %>
+    <%= image_tag post.image.representation(resize_to_fit: [nil, 500]).processed.url, loading: 'lazy' %>
   </div>
 <% end %>
