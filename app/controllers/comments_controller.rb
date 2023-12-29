@@ -18,7 +18,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
 
-    redirect_back_or_to root_path, status: :see_other
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_back_or_to root_path, status: :see_other }
+    end
   end
 
   private
